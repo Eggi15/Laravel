@@ -72,10 +72,10 @@
 									<table class="table table-hover">
 										<thead>
 											<tr>
-												<th>Kode</th>
-												<th>Nama</th>
+												<th>Code</th>
+												<th>Name</th>
 												<th>Semester</th>
-												<th>Nilai</th>
+												<th>Point</th>
 											</tr>
 										</thead>
 										<tbody>
