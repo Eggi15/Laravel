@@ -151,10 +151,7 @@
 	        text: 'Laporan Nilai Siswa'
 	    },
 	    xAxis: {
-	        categories: [
-	            'Matematika Dasar',
-	            'Bahasa Indonesia'
-	        ],
+	        categories: {!!json_encode($categories)!!},
 	        crosshair: true
 	    },
 	    yAxis: {
@@ -165,8 +162,6 @@
 	    },
 	    tooltip: {
 	        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-	        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-	            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
 	        footerFormat: '</table>',
 	        shared: true,
 	        useHTML: true
@@ -178,20 +173,8 @@
 	        }
 	    },
 	    series: [{
-	        name: 'Tokyo',
-	        data: [49.9, 71.5]
-
-	    }, {
-	        name: 'New York',
-	        data: [83.6, 78.8]
-
-	    }, {
-	        name: 'London',
-	        data: [48.9, 38.8]
-
-	    }, {
-	        name: 'Berlin',
-	        data: [42.4, 33.2]
+	        name: 'Nilai',
+	        data: {!!json_encode($data)!!},
 
 	    }]
 	});
