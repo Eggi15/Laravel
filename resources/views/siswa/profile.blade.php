@@ -1,5 +1,8 @@
 @extends('layouts.master')
 
+@section('header')
+<link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+@stop
 @section('content')
 	<div class="main">
 			<!-- MAIN CONTENT -->
@@ -72,10 +75,12 @@
 									<table class="table table-hover">
 										<thead>
 											<tr>
-												<th>Code</th>
-												<th>Name</th>
+												<th>Kode</th>
+												<th>Nama</th>
 												<th>Semester</th>
-												<th>Point</th>
+												<th>Nilai</th>
+												<th>Guru</th>
+												<th>Aksi</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -84,9 +89,13 @@
 												<td>{{$mapel->kode}}</td>
 												<td>{{$mapel->nama}}</td>
 												<td>{{$mapel->semester}}</td>
-												<td>{{$mapel->pivot->nilai}}</td>
+												<!-- data pk itu primary key -->
+												<td><a href="#" class="nilai" data-type="text" data-pk="{{$mapel->id}}" data-url="/api/siswa/{{$siswa->id}}/editnilai" data-title="Masukan Nilai">{{$mapel->pivot->nilai}}</a></td>
+												<td><a href="/guru/{{$mapel->guru_id}}/profile">{{$mapel->guru->nama}}</a></td>
+												<td><a href="/siswa/{{$siswa->id}}/{{$mapel->id}}/deletenilai" class="btn btn-danger btn-sm" onclick="return confirm('Yakin Mau Di Hapus ?')">Delete</a></td>
 											</tr>
 											@endforeach
+											<!-- jika menggunkana jquery untuk melihat error harus memakai inspect-console -->
 										</tbody>
 									</table>
 								</div>
@@ -141,6 +150,7 @@
 @stop
 
 @section('footer')
+<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 	<script src="https://code.highcharts.com/highcharts.js"></script>
 	<script>
 		Highcharts.chart('chartNilai', {
@@ -178,5 +188,9 @@
 
 	    }]
 	});
+		// untuk class di awali dengan titik
+		$(document).ready(function() {
+		    $('.nilai').editable();
+		});
 	</script>
 @stop
