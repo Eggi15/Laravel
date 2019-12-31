@@ -16,6 +16,8 @@
 	<link rel="stylesheet" href="{{asset('admin/assets/css/demo.css')}}">
 	<link rel="stylesheet" href="{{asset('admin/assets/css/demo.css')}}">
 	<!-- GOOGLE FONTS -->
+	<!-- TOASTR -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<!-- ICONS -->
 	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
@@ -48,6 +50,13 @@
 	<script src="{{asset('admin/assets/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
 	<script src="{{asset('admin/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
 	<script src="{{asset('admin/assets/scripts/klorofil-common.js')}}"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<script>
+		@if(Session::has('sukses'))
+			toastr.success("{{session::get('sukses')}}", "Sukses")
+		@endif
+	</script>
 	@yield('footer')
 
 </body>
