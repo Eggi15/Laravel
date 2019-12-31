@@ -22,4 +22,25 @@ class Siswa extends Model
     {
     	return $this->belongsToMany(Mapel::class)->withPivot(['nilai'])->withTimeStamps();
     }
+
+    public function rataratanilai()
+    {
+        //ambil nilai-nilai dari mapel
+        //$this ini mengambil class siswa yang sudah di bentuk
+        //harus di deklarasikan dahulu $total itu berapa agar di kenal ketika di foreach(looping)
+        //++ untuk melopping berapa kali ada jumlah nilai di mapel dan fungsisama seperti +=
+        $total = 0;
+        $hitung = 0;
+        foreach ($this->mapel as $mapel) {
+            $total += $mapel->pivot->nilai;
+            $hitung++;
+        }
+
+        return round($total/$hitung);
+    }
+
+    public function nama_lengkap()
+    {
+        return $this->nama_depan. ' '.$this->nama_belakang;
+    }
 }

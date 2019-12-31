@@ -37,7 +37,7 @@
 												{{$siswa->mapel->count()}} <span>Mata Pelajaran</span>
 											</div>
 											<div class="col-md-4 stat-item">
-												7 <span>PPKN</span>
+												{{$siswa->rataratanilai()}}<span>Rata-Rata Nilai</span>
 											</div>
 											<div class="col-md-4 stat-item">
 												10 <span>Olahraga</span>
@@ -104,12 +104,10 @@
 								<div id="chartNilai"></div>
 							</div>
 							<!-- END RIGHT COLUMN -->
-						</div>
 					</div>
 				</div>
 			</div>
 			<!-- END MAIN CONTENT -->
-		</div>
 
 		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog" role="document">
@@ -148,7 +146,6 @@
 	  </div>
 	</div>
 @stop
-
 @section('footer')
 <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 	<script src="https://code.highcharts.com/highcharts.js"></script>

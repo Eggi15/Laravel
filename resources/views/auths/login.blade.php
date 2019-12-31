@@ -30,7 +30,7 @@
 					<div class="left">
 						<div class="content">
 							<div class="header">
-								<div class="logo text-center"><img src="{{asset('admin/axiasolusi.png')}}" width="100" alt="Axiasolui Logo"></div>
+								<div  class="logo text-center" href="/"><img src="{{asset('admin/axiasolusi.png')}}" width="100" alt="Axiasolui Logo"></div>
 								<p class="lead">Login</p>
 							</div>
 							<form class="form-auth-small" action="/postlogin" method="POST">

@@ -10,6 +10,10 @@
 								<div class="panel-heading">
 									<h3 class="panel-title">Data Siswa</h3>
 									<div class="right">
+										<a href="{{ route('siswa.export') }}" class="btn btn-sm btn-primary">Export Excell</a>
+
+										<a href="{{ route('siswa.exportpdf') }}" class="btn btn-sm btn-primary">Export PDF</a>
+
 									<button type="button" class="btn" data-toggle="modal" data-target="#exampleModal"><i class="lnr lnr-plus-circle"></i></button>		
 									</div>
 								</div>
@@ -22,6 +26,7 @@
 												<th>JENIS KELAMIN</th>
 												<th>AGAMA</th>
 												<th>ALAMAT</th>
+												<th>RATA-RATA NILAI</th>
 												<th>AKSI</th>
 											</tr>
 										</thead>
@@ -34,9 +39,10 @@
 											<td>{{$siswa->jenis_kelamin}}</td>
 											<td>{{$siswa->agama}}</td>
 											<td>{{$siswa->alamat}}</td>
+											<td>{{$siswa->rataratanilai()}}</td>
 											<td>
 												<a href="/siswa/{{$siswa->id}}/edit	" class="btn btn-warning btn-sm">Edit</a>
-												<a href="/siswa/{{$siswa->id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Yakin Mau Di Hapus ?')">Delete</a>
+												<a href="#" class="btn btn-danger btn-sm delete" siswa-id="{{$siswa->id}}">Delete</a>
 											</td>
 										</tr>
 										@endforeach
@@ -120,4 +126,25 @@
       </div>
     </div>
   </div>
+@stop
+
+@section('footer')
+	<script>
+		 $('.delete').click(function(){
+		 	var siswa_id = $(this).attr('siswa-id');
+		 	swal({
+			  title: "Yakin?",
+			  text: "Mau di Hapus siswa dengan No id "+siswa_id + " ??",
+			  icon: "warning",
+			  buttons: true,
+			  dangerMode: true,
+			})
+			.then((willDelete) => {
+				console.log(willDelete)
+			  if (willDelete) {
+			  	window.location = "/siswa/"+siswa_id+"/delete";
+			  }
+			});
+		 });
+	</script>
 @stop
