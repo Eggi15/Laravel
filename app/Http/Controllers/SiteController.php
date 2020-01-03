@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
 
 class SiteController extends Controller
 {
     public function home()
     {
-    	return view('sites.home');
+        $posts = post::all();
+    	return view('sites.home',compact(['posts']));
     }
 
     public function about()
@@ -36,5 +38,12 @@ class SiteController extends Controller
         $siswa = \App\siswa::create($request->all());
 
         return redirect('/')->with('sukses','Data Pendaftaran berhasil dikirim');
+    }
+
+    public function singlepost($slug)
+    {
+        $post = Post::where('slug','=',$slug)->first();
+        
+        return view('sites.singlepost',compact(['post']));
     }
 }

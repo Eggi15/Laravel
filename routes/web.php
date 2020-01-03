@@ -32,9 +32,17 @@ Route::group(['middleware' => ['auth','checkrole:admin']],function(){
 	Route::get('/siswa/exportexcell', 'SiswaController@exportexcell')->name('siswa.export');
 	Route::get('/siswa/exportpdf', 'SiswaController@exportpdf')->name('siswa.exportpdf');
 	Route::get('/guru/{id}/profile','GuruController@profile')->name('guru.profile');
+	Route::get('/posts','PostController@index')->name('post.index');
+	Route::get('post/add', 'PostController@add')->name('post.add');
+	Route::post('post/create', 'PostController@create')->name('post.create');
+	Route::post('post/{post}/delete', 'PostController@destroy')->name('post.destroy');
 });
 
 Route::group(['middleware' => ['auth','checkrole:admin,siswa']],function(){
 	Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
-
 });
+
+Route::get('/{slug}',[
+	'uses' => 'SiteController@singlepost',
+	'as' => 'site.single.post',
+]);

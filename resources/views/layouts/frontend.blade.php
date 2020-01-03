@@ -14,7 +14,7 @@
     <!-- meta character set -->
     <meta charset="UTF-8">
     <!-- Site Title -->
-    <title>Education</title>
+    <title>{{config('sekolah.title')}}</title>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
       <!--
@@ -40,21 +40,19 @@
                 <ul>
                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                <li><a href="#"><i class="fa fa-behance"></i></a></li>
                 </ul>     
               </div>
               <div class="col-lg-6 col-sm-6 col-4 header-top-right no-padding">
-                <a href="tel:+953 012 3654 896"><span class="lnr lnr-phone-handset"></span> <span class="text">+953 012 3654 896</span></a>
-                <a href="mailto:support@colorlib.com"><span class="lnr lnr-envelope"></span> <span class="text">support@colorlib.com</span></a>     
+                <a href="tel:+953 012 3654 896"><span class="lnr lnr-phone-handset"></span> <span class="text">{{config('sekolah.telepon')}}</span></a>
+                <a href="mailto:support@colorlib.com"><span class="lnr lnr-envelope"></span> <span class="text">{{config('sekolah.email')}}</span></a>     
               </div>
             </div>                  
           </div>
       </div>
         <div class="container main-menu">
-          <div class="row align-items-center justify-content-between d-flex">
+          <div class="row align-items-center justify-content-between' d-flex">
             <div id="logo">
-              <a href="index.html"><img src="{{asset('/frontend')}}/img/logo.png" alt="" title="" /></a>
+              <a href="index.html"><img src="{{config('sekolah.logo_url')}}" width="60" alt="" title="SMA YAPERMRI" /></a>
             </div>
             <nav id="nav-menu-container">
               <ul class="nav-menu">
@@ -138,8 +136,8 @@
           </div>
           <div class="footer-bottom row align-items-center justify-content-between">
             <p class="footer-text m-0 col-lg-6 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
             <div class="col-lg-6 col-sm-12 footer-social">
               <a href="#"><i class="fa fa-facebook"></i></a>
               <a href="#"><i class="fa fa-twitter"></i></a>

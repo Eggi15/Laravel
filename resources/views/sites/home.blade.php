@@ -3,19 +3,18 @@
 @section('content')
 	
       <!-- start banner Area -->
-      <section class="banner-area relative" id="home">
+      <section class="banner-area relative" id="home" style="background: url('{{config('sekolah.image_banner_url')}}');">
         <div class="overlay overlay-bg"></div>  
         <div class="container">
           <div class="row fullscreen d-flex align-items-center justify-content-between">
             <div class="banner-content col-lg-9 col-md-12">
               <h1 class="text-uppercase">
-                We Ensure better education
-                for a better world      
+                {{config('sekolah.welcome_message')}}      
               </h1>
               <p class="pt-10 pb-10">
-                In the history of modern astronomy, there is probably no one greater leap forward than the building and launch of the space telescope known as the Hubble.
+                {{config('sekolah.sub_welcome_message')}}
               </p>
-              <a href="#" class="primary-btn text-uppercase">Get Started</a>
+              <a href="{{config('sekolah.welcome_message_button_url')}}" class="primary-btn text-uppercase">{{config('sekolah.welcome_message_button_text')}}</a>
             </div>                    
           </div>
         </div>          
@@ -29,40 +28,39 @@
             <div class="col-lg-4">
               <div class="single-feature">
                 <div class="title">
-                  <h4>Learn Online Courses</h4>
+                  <h4>{{config('sekolah.home_feature_column_1_title')}}</h4>
                 </div>
                 <div class="desc-wrap">
                   <p>
-                    Usage of the Internet is becoming more common due to rapid advancement
-                    of technology.
+                   {{config('sekolah.home_feature_column_1_content')}}
                   </p>
-                  <a href="#">Join Now</a>                  
+                  <a href="{{config('sekolah.home_feature_column_1_link_url')}}">{{config('sekolah.home_feature_column_1_link_text')}}</a>                  
                 </div>
               </div>
             </div>
             <div class="col-lg-4">
               <div class="single-feature">
                 <div class="title">
-                  <h4>No.1 of universities</h4>
+                  <h4>{{config('sekolah.home_feature_column_2_title')}}</h4>
                 </div>
                 <div class="desc-wrap">
                   <p>
-                    For many of us, our very first experience of learning about the celestial bodies begins when we saw our first.
+                   {{config('sekolah.home_feature_column_2_content')}}
                   </p>
-                  <a href="#">Join Now</a>                  
+                  <a href="{{config('sekolah.home_feature_column_2_link_url')}}">{{config('sekolah.home_feature_column_2_link_text')}}</a>                  
                 </div>
               </div>
             </div>
             <div class="col-lg-4">
               <div class="single-feature">
                 <div class="title">
-                  <h4>Huge Library</h4>
+                  <h4>{{config('sekolah.home_feature_column_3_title')}}</h4>
                 </div>
                 <div class="desc-wrap">
                   <p>
-                    If you are a serious astronomy fanatic like a lot of us are, you can probably remember that one event.
+                    {{config('sekolah.home_feature_column_3_content')}}
                   </p>
-                  <a href="#">Join Now</a>                  
+                  <a href="{{config('sekolah.home_feature_column_3_link_url')}}">{{config('sekolah.home_feature_column_3_link_text')}}</a>                 
                 </div>
               </div>
             </div>                        
@@ -574,64 +572,24 @@
           <div class="row d-flex justify-content-center">
             <div class="menu-content pb-70 col-lg-8">
               <div class="title text-center">
-                <h1 class="mb-10">Latest posts from our Blog</h1>
-                <p>In the history of modern astronomy there is.</p>
+                <h1 class="mb-10">Berita Terbaru</h1>
               </div>
             </div>
           </div>          
           <div class="row">
+            @foreach ($posts as $post)
             <div class="col-lg-3 col-md-6 single-blog">
               <div class="thumb">
-                <img class="img-fluid" src="{{asset('/frontend')}}/img/b1.jpg" alt="">               
+                <img class="img-fluid" src="{{$post->thumbnail()}}" alt="">               
               </div>
-              <p class="meta">25 April, 2018  |  By <a href="#">Mark Wiens</a></p>
+              <p class="meta">{{$post->created_at->format('D, M Y')}}  |  Oleh <a href="#">{{$post->user->name}}</a></p>
               <a href="blog-single.html">
-                <h5>Addiction When Gambling Becomes A Problem</h5>
+                <h5>{{$post->title}}</h5>
               </a>
-              <p>
-                Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend hours in front of their.
-              </p>
-              <a href="#" class="details-btn d-flex justify-content-center align-items-center"><span class="details">Details</span><span class="lnr lnr-arrow-right"></span></a>    
+                {!!$post->content!!}
+              <a href="{{route('site.single.post',$post->slug)}}" class="details-btn d-flex justify-content-center align-items-center"><span class="details">Details</span><span class="lnr lnr-arrow-right"></span></a>    
             </div>
-            <div class="col-lg-3 col-md-6 single-blog">
-              <div class="thumb">
-                <img class="img-fluid" src="{{asset('/frontend')}}/img/b2.jpg" alt="">               
-              </div>
-              <p class="meta">25 April, 2018  |  By <a href="#">Mark Wiens</a></p>
-              <a href="blog-single.html">
-                <h5>Computer Hardware Desktops And Notebooks</h5>
-              </a>
-              <p>
-                Ah, the technical interview. Nothing like it. Not only does it cause anxiety, but it causes anxiety for several different reasons. 
-              </p>
-              <a href="#" class="details-btn d-flex justify-content-center align-items-center"><span class="details">Details</span><span class="lnr lnr-arrow-right"></span></a>            
-            </div>
-            <div class="col-lg-3 col-md-6 single-blog">
-              <div class="thumb">
-                <img class="img-fluid" src="{{asset('/frontend')}}/img/b3.jpg" alt="">               
-              </div>
-              <p class="meta">25 April, 2018  |  By <a href="#">Mark Wiens</a></p>
-              <a href="blog-single.html">
-                <h5>Make Myspace Your Best Designed Space</h5>
-              </a>
-              <p>
-                Plantronics with its GN Netcom wireless headset creates the next generation of wireless headset and other products such as wireless.
-              </p>
-              <a href="#" class="details-btn d-flex justify-content-center align-items-center"><span class="details">Details</span><span class="lnr lnr-arrow-right"></span></a>                  
-            </div>
-            <div class="col-lg-3 col-md-6 single-blog">
-              <div class="thumb">
-                <img class="img-fluid" src="{{asset('/frontend')}}/img/b4.jpg" alt="">               
-              </div>
-              <p class="meta">25 April, 2018  |  By <a href="#">Mark Wiens</a></p>
-              <a href="blog-single.html">
-                <h5>Video Games Playing With Imagination</h5>
-              </a>
-              <p>
-                About 64% of all on-line teens say that do things online that they wouldn’t want their parents to know about.   11% of all adult internet 
-              </p>
-              <a href="#" class="details-btn d-flex justify-content-center align-items-center"><span class="details">Details</span><span class="lnr lnr-arrow-right"></span></a>              
-            </div>              
+            @endforeach
           </div>
         </div>  
       </section>
